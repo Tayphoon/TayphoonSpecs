@@ -1,4 +1,4 @@
-﻿#
+#
 # Be sure to run `pod lib lint TCCollections.podspec' to ensure this is a
 # valid spec before submitting.
 #
@@ -26,7 +26,24 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files  = 'TCCollections', 'TCCollections/**/*.{h,m}'
-  s.public_header_files = 'TCCollections/**/*.h'
-  s.frameworks = 'UIKit'
+  s.default_subspecs = 'Core'
+
+  s.subspec 'Core' do |core|
+    core.source_files = 'TCCollections/TCCollectionsConstants.h', 'TCCollections/Core/**/*.{h,m}'
+
+    core.dependency 'TCCollections/Utils'
+    core.frameworks = 'UIKit'
+  end
+
+  s.subspec 'CoreData' do |cdos|
+    cdos.source_files = 'TCCollections/CoreData/**/*.{h,m}'
+
+    cdos.dependency 'TCCollections/Core'
+    cdos.frameworks = 'CoreData'
+  end
+
+  s.subspec 'Utils' do |us|
+    us.source_files = 'TCCollections/Utils/**/*.{h,m}'
+  end
+
 end
