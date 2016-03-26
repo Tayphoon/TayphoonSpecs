@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.default_subspecs = 'Core'
+  s.source_files = 'TCCollections/TCCollections.h'
 
   s.subspec 'Core' do |core|
     core.source_files = 'TCCollections/TCCollectionsConstants.h', 'TCCollections/Core/**/*.{h,m}'
