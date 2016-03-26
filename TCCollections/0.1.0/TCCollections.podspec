@@ -26,9 +26,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.default_subspecs = 'TCCollections'
+  s.default_subspecs = 'Support'
 
-  s.subspec 'TCCollections' do |ss|
+  s.subspec 'Support' do |ss|
   ss.source_files = 'TCCollections/TCCollections.h'
 
   ss.dependency 'TCCollections/Core'
