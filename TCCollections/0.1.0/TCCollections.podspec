@@ -26,19 +26,11 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.default_subspecs = 'Support'
-
-  s.subspec 'Support' do |ss|
-  ss.source_files = 'TCCollections/TCCollections.h'
-
-  ss.dependency 'TCCollections/Core'
-  ss.dependency 'TCCollections/CoreData'
-  end
+  s.default_subspecs = 'CoreData'
 
   s.subspec 'Core' do |core|
     core.source_files = 'TCCollections/TCCollectionsConstants.h', 'TCCollections/Core/**/*.{h,m}'
 
-    core.dependency 'TCCollections/Utils'
     core.frameworks = 'UIKit'
   end
 
@@ -49,8 +41,8 @@ Pod::Spec.new do |s|
     cdos.frameworks = 'CoreData'
   end
 
-  s.subspec 'Utils' do |us|
-    us.source_files = 'TCCollections/Utils/**/*.{h,m}'
+  s.subspec 'Support' do |ss|
+    ss.source_files = 'TCCollections/TCCollections.h'
   end
 
 end
