@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |core|
     core.source_files = 'TCCollections/TCCollectionsConstants.h', 'TCCollections/Core/**/*.{h,m}'
 
+    core.dependency 'TCCollections/Support'
     core.frameworks = 'UIKit'
   end
 
