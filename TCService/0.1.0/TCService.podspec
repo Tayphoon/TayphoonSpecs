@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/Tayphoon/TCService.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
+  s.ios.deployment_target = '8.0'
   s.requires_arc = true
 
 ### Subspecs
@@ -31,16 +32,19 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |cs|
-    cs.source_files = 'TCService/Core/**/*'
+    cs.public_header_files = 'TCService/Core/**/*.{h}'
+    cs.source_files = 'TCService/Core/**/*.{h,m}'
 
     cs.dependency 'TCService/Utils'
+    cs.dependency 'RestKit', '~> 0.26.0'
+    cs.dependency 'RKValueTransformers'
+    cs.prefix_header_contents = '#import <SystemConfiguration/SystemConfiguration.h>', '#import <MobileCoreServices/MobileCoreServices.h>'
+    cs.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration', 'UIKit'
   end
 
   s.subspec 'Utils' do |us|
-    us.source_files = 'TCService/Utils/**/*'
+    us.public_header_files = 'TCService/Utils/**/*.{h}'
+    us.source_files = 'TCService/Utils/**/*.{h,m}'
   end
 
-  s.prefix_header_contents = '#import <SystemConfiguration/SystemConfiguration.h>', '#import <MobileCoreServices/MobileCoreServices.h>'
-  s.dependency 'RestKit', '0.26.0'
-  s.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration', 'UIKit'
 end
